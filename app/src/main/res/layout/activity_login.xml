@@ -29,6 +29,12 @@
         android:inputType="textPassword"
         android:text="111111" />
 
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="记住密码" />
+
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"

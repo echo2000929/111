@@ -23,8 +23,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private SharedPreferences sp;
-    private String sessionID = "";
 
     private ViewPager viewPager;
     private FragmentPagerAdapter fragmentPagerAdapter;

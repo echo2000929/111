@@ -47,11 +47,14 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initViews();
+        sp=getSharedPreferences("login",MODE_PRIVATE);
+        readSP();
     }
     private void initViews() {
         etuser = findViewById(R.id.editText4);
         etpass = findViewById(R.id.editText6);
         btnlogin = findViewById(R.id.button2);
+        sw=findViewById(R.id.switch1);
 
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
