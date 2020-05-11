@@ -6,19 +6,26 @@ import com.example.zyfypt_229.iface.LoginListener;
 import com.example.zyfypt_229.iface.Loginiface;
 import com.example.zyfypt_229.service.UserService;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import timber.log.Timber;
 
 public class LoginModel implements Loginiface {
     private Retrofit retrofit;
     //构造函数
     public LoginModel()
-    {   //使用Retrofit----1
+    {  HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+        //使用Retrofit----1
         retrofit=new Retrofit.Builder()
                 .baseUrl(Common.BASEURL)
+                .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
@@ -41,7 +48,9 @@ public class LoginModel implements Loginiface {
             }
             @Override
             public void onFailure(Call<LoginBean> call, Throwable t) {
+                Timber.e(t);
                 loginListener.onFail(t.getMessage ());
+
             }
         });
     }
