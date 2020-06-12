@@ -1,6 +1,7 @@
 package com.example.zyfypt_229.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.zyfypt_229.R;
+import com.example.zyfypt_229.activities.ViewArticleActivity;
 import com.example.zyfypt_229.bean.ArticleBean;
 import com.example.zyfypt_229.common.Common;
 import com.squareup.picasso.Picasso;
@@ -55,8 +57,14 @@ public class ArticleAdapter extends RecyclerView.Adapter {
         View v=layoutInflater.inflate(
                 R.layout.item,parent,false);
 
+
+
         return new ViewHolder(v);
+
+
     }
+
+
 
     @Override  //为每个item填充数据，设置点击事件
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
@@ -78,10 +86,16 @@ public class ArticleAdapter extends RecyclerView.Adapter {
             @Override
             public void onClick(View view) {
                 //取出当前item的id
-                int id=bean.getId();//bean需要增加final
+                int id= bean.getId();//bean需要增加final
                 Toast.makeText(context, ""+id, Toast.LENGTH_SHORT).show();
+
+                Intent intent=new Intent(context, ViewArticleActivity.class);
+                intent.putExtra("resid",bean.getId());
+                context.startActivity(intent);
+
             }
         });
+
 
     }
 

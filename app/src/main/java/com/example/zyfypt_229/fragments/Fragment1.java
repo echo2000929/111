@@ -20,6 +20,8 @@ import com.example.zyfypt_229.model.ArticleModel;
 
 import java.util.List;
 
+import timber.log.Timber;
+
 
 public class Fragment1 extends BaseFragment {
     private List<ArticleBean> list;
@@ -52,12 +54,13 @@ public class Fragment1 extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         System.out.println("--f1--"+getSessionId());
+        Timber.i("on get session id %s", getSessionId());
         initRecyclerView(view);
         ArticleModel model=new ArticleModel();
         model.getResultList("article",1,getSessionId(),listener);//页码默认第一页
     }
     private void initRecyclerView(View view) {
-        recyclerView=view.findViewById(R.id.recyclerview);
+        recyclerView=view.findViewById(R.id.recyclerView);
         layoutManager=new LinearLayoutManager(context);
         recyclerView.setLayoutManager(layoutManager);
         //每个item如果是确定高度，设置此项提高性能

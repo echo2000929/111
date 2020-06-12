@@ -4,7 +4,9 @@
     package="com.example.zyfypt_229">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".MyApp"
@@ -16,6 +18,16 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".activities.Main3Activity"></activity>
+        <activity android:name=".activities.MyPDFView" />
+        <activity android:name=".activities.ViewVideoActivity1" />
+        <activity android:name=".activities.ViewVideoActivity" />
+        <activity android:name=".activities.TwareActivity" />
+        <activity android:name=".activities.TcaseActivity" />
+        <activity android:name=".activities.Main2Activity" />
+        <activity android:name=".fragments.Fragment32" />
+        <activity android:name=".fragments.Fragment31" />
+        <activity android:name=".activities.ViewArticleActivity" />
         <activity android:name=".activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,9 +35,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.MainActivity">
-
-        </activity>
+        <activity android:name=".activities.MainActivity" />
     </application>
 
 </manifest>

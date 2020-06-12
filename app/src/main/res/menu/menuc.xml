@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <textview android:id="@+id/blog"
+        app:showAsAction="always"
+
+        android:title="博文"/>
+
+    <item android:id="@+id/keynote"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:title="课件"/>
+
+    <item android:id="@+id/video"
+        app:showAsAction="always"
+
+        android:enabled="true"
+        android:title="视频"/>
+
+    <item android:id="@+id/project"
+        app:showAsAction="always"
+
+        android:enabled="true"
+        android:title="项目"/>
+    <item android:id="@+id/sample"
+        app:showAsAction="always"
+
+        android:enabled="true"
+        android:title="案例"/>
+</menu>

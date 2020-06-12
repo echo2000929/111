@@ -19,10 +19,12 @@ import com.example.zyfypt_229.model.LoginModel;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText etuser, etpass;
-    private Button btnlogin;
+    private Button btnlogin,button3;
     private String username = "", password = "", sessionID = "";
     private Switch sw;
     private SharedPreferences sp;
+    private int ZX=0;
+
 
     private LoginListener loginListener = new LoginListener() {
         @Override
@@ -30,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
             sessionID = loginBean.getSessionid();
             Log.i("LoginActivity", "----sessionID=" + sessionID);
             if (sessionID != null) {
+                saveSP();
                 Toast.makeText(LoginActivity.this, "登录成功" + sessionID, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
@@ -54,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
         etuser = findViewById(R.id.editText4);
         etpass = findViewById(R.id.editText6);
         btnlogin = findViewById(R.id.button2);
+        button3=findViewById(R.id.button3);
         sw=findViewById(R.id.switch1);
 
         btnlogin.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +69,13 @@ public class LoginActivity extends AppCompatActivity {
                 LoginModel loginModel = new LoginModel();
                 loginModel.getLoginResult(username, password, loginListener);
 
+            }
+        });
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(LoginActivity.this,Main2Activity.class);
+                startActivity(intent);
             }
         });
     }
@@ -86,11 +97,23 @@ public class LoginActivity extends AppCompatActivity {
         String pass=sp.getString("password","");
         boolean b=sp.getBoolean("remember",false);
         sw.setChecked(b);
-        if(b)
-        {
+        if (b&&ZX==0){
             etuser.setText(name);
             etpass.setText(pass);
         }
+        else
+        {etuser.setText("");
+            etpass.setText("");}
+
     }
+
+    private void deleteSP() {
+        SharedPreferences sp = getSharedPreferences("login",MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.clear();
+        editor.commit();
+
+    }
+
 }
 
